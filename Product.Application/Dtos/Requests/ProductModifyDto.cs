@@ -1,4 +1,4 @@
 ﻿namespace Product.Application.Dtos.Requests
 {
-    public record ProductModifyDto(decimal Price, string Description);
+    public record ProductModifyDto(string Name, decimal Price, string Description);
 }

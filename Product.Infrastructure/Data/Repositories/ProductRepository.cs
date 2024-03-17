@@ -11,7 +11,9 @@ namespace Product.Infrastructure.Data.Repositories
                 ? await context.Products.Where(filter).ToListAsync()
                 : await context.Products.ToListAsync();
 
-        public async Task<Domain.Models.Product> GetProduct(Guid id) => await context.Products.FirstOrDefaultAsync(x => x.Id == id);
+        public async Task<Domain.Models.Product> GetProductByFilter(Expression<Func<Domain.Models.Product, bool>> filter) => await context.Products.FirstOrDefaultAsync(filter);
+
+        public async Task<Domain.Models.Product> GetProductById(Guid id) => await context.Products.FirstOrDefaultAsync(x => x.Id == id);
 
         public async Task CreateProduct(Domain.Models.Product product)
         {

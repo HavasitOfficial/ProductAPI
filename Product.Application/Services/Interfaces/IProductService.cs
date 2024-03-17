@@ -7,8 +7,8 @@ namespace Product.Application.Services.Interfaces
     {
         Task<List<ProductDto>> GetProducts(ProductFilterDto productFilterDto);
         Task<ProductDto> GetProduct(Guid id);
-        Task<ProductDto> CreateProduct(ProductCreateDto product);
-        Task<ProductDto> UpdateProduct(Guid id, ProductModifyDto product);
+        Task<ProductDto> CreateProduct(ProductCreateDto productDto);
+        Task<ProductDto> UpdateProduct(Guid id, ProductModifyDto productDto);
         Task DeleteProduct(Guid id);
     }
 }

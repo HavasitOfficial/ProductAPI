@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34607.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Api", "Product.Api\Product.Api.csproj", "{42A7CCD5-D578-4F7A-B91F-436AC9736B35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.Api", "Product.Api\Product.Api.csproj", "{42A7CCD5-D578-4F7A-B91F-436AC9736B35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Application", "Product.Application\Product.Application.csproj", "{67A722F8-AB3F-427F-9495-BEE2E6DB7305}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.Application", "Product.Application\Product.Application.csproj", "{67A722F8-AB3F-427F-9495-BEE2E6DB7305}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Infrastructure", "Product.Infrastructure\Product.Infrastructure.csproj", "{DA8895D3-CECA-42B4-9284-F70CB78A4071}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.Infrastructure", "Product.Infrastructure\Product.Infrastructure.csproj", "{DA8895D3-CECA-42B4-9284-F70CB78A4071}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Domain", "Product.Domain\Product.Domain.csproj", "{34DCAF98-7AC0-4E43-A64B-5FEE01A3CA5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.Domain", "Product.Domain\Product.Domain.csproj", "{34DCAF98-7AC0-4E43-A64B-5FEE01A3CA5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.Api.Tests", "Product.Api.Tests\Product.Api.Tests.csproj", "{08CADC7B-6C1F-4BA0-914E-370D37F563ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{34DCAF98-7AC0-4E43-A64B-5FEE01A3CA5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34DCAF98-7AC0-4E43-A64B-5FEE01A3CA5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34DCAF98-7AC0-4E43-A64B-5FEE01A3CA5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08CADC7B-6C1F-4BA0-914E-370D37F563ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08CADC7B-6C1F-4BA0-914E-370D37F563ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08CADC7B-6C1F-4BA0-914E-370D37F563ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08CADC7B-6C1F-4BA0-914E-370D37F563ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

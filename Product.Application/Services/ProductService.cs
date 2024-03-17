@@ -23,40 +23,54 @@ namespace Product.Application.Services
 
         public async Task<ProductDto> GetProduct(Guid id)
         {
-            var product = await productRepository.GetProduct(id) ??
+            var product = await productRepository.GetProductById(id) ??
                           throw new NotFoundException($"Product with id {id} not found");
 
             return ProductMapper.MapToProductDto(product);
         }
 
-        public async Task<ProductDto> CreateProduct(ProductCreateDto product)
+        public async Task<ProductDto> CreateProduct(ProductCreateDto productDto)
         {
-            await createValidator.ValidateAndThrowAsync(product);
+            await createValidator.ValidateAndThrowAsync(productDto);
 
-            var newProduct = ProductMapper.MapToProduct(product);
+            var existingProduct = await productRepository.GetProductByFilter(x => x.Name.Equals(productDto.Name));
+
+            if (existingProduct != null)
+            {
+                throw new ArgumentException($"Product with name {productDto.Name} already exists");
+            }
+
+            var newProduct = ProductMapper.MapToProduct(productDto);
 
             await productRepository.CreateProduct(newProduct);
-            newProduct = await productRepository.GetProduct(newProduct.Id);
+            newProduct = await productRepository.GetProductById(newProduct.Id);
 
             return ProductMapper.MapToProductDto(newProduct);
         }
 
-        public async Task<ProductDto> UpdateProduct(Guid id, ProductModifyDto product)
+        public async Task<ProductDto> UpdateProduct(Guid id, ProductModifyDto productDto)
         {
-            await modifyValidator.ValidateAndThrowAsync(product);
-            var existingProduct = await productRepository.GetProduct(id) ??
+            await modifyValidator.ValidateAndThrowAsync(productDto);
+            var product = await productRepository.GetProductById(id) ??
                                   throw new NotFoundException($"Product not found with the given Id:[{id}]");
 
-            ProductMapper.ProductModifyDtoToExisting(product, existingProduct);
-            await productRepository.UpdateProduct(existingProduct);
+            var existingProduct = await productRepository.GetProductByFilter(x => x.Name.Equals(product.Name) && x.Id != product.Id);
 
-            return ProductMapper.MapToProductDto(existingProduct);
+            if (existingProduct != null)
+            {
+                throw new ArgumentException($"Product with name {productDto.Name} already exists");
+            }
+
+            ProductMapper.ProductModifyDtoToExisting(productDto, product);
+            await productRepository.UpdateProduct(product);
+
+            return ProductMapper.MapToProductDto(product);
 
         }
 
         public async Task DeleteProduct(Guid id)
         {
-            var existingProduct = await productRepository.GetProduct(id) ??
+            var existingProduct = await productRepository.GetProductById(id) ??
                                   throw new NotFoundException($"Product not found with the given Id:[{id}]");
 
             await productRepository.DeleteProduct(existingProduct);
